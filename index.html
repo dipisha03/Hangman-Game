@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>HangMan</title>
+
+<!-- BootStrap Link-->
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+
+
+<!-- Jquery Link -->
+<script src="https://code.jquery.com/jquery.js"></script>
+
+
+
+<!-- CSS -->
+<style type="text/css">
+	body{
+	
+	}
+
+</style>
+</head>
+<body>
+
+
+
+<!-- JUMBOTRON HEADER -->
+<div class="jumbotron" style="background-image: url(https://www.wpfaster.org/wp-content/uploads/2013/06/Questionmark-Background-1.jpg); margin-left: auto; margin-right: auto;">
+  <h1 class="display-2">HangMan</h1>
+  <p class="lead">This is a simple Game!</p>
+  <hr class="my-4">
+
+
+
+
+<!--Guess a letter text and -->
+<div style= "margin-left: 500px;">
+	<h1>Guess a letter</h1>
+	
+	<input id = "letter" type="text">
+	
+	<input type="button" value="letter" onclick="Letter()"/>
+	
+	<p id="answer"></p>
+	
+	<p id="counter"></p>
+
+	<p id="wrong"></p>
+
+	<p id= "stat"></p>
+
+</div>
+
+
+
+<!-- 
+  <p class="lead">
+    <a class="btn btn-primary btn-lg" href="#" role="button">Play!</a>
+  </p> -->
+</div>
+
+
+
+
+<script type="text/javascript">
+
+
+//Array that with words that will be chosesn at random.
+	var randomWordArr = ["pizza" ,"pasta", "banana","notebook", "teapot","chair"];
+
+
+	var randomWord = randomWordArr [Math.floor(Math.random()*randomWordArr.length) ];
+//Setting Global variables	
+	var s;
+	var count = 0;
+	var wrongCount = 0;
+
+
+
+//Empty Array to push answers into.
+	var answerArray = [];
+
+
+
+//	function startUp() 
+
+//	{
+
+
+		for (var i = 0; i < randomWord.length; i++) {
+		answerArray[i] = "_";
+
+		}
+
+//put them in a string 
+		
+		s = answerArray.join(" ");
+		document.getElementById("answer").innerHTML = s; 
+
+
+//	}
+
+
+	function Letter()
+	{
+
+
+		var letter = document.getElementById("letter").value;
+//make sure we have a guess(more checks can be made here, only letters etc.)
+		if(letter.length > 0)
+
+		{
+			for (var i = 0; i < randomWord.length; i++){
+//now, if the randomword contains a letter that the user typed in
+				if (randomWord[i] === letter) {
+			
+//assign it to a letter
+					answerArray[i] = letter;
+				}				
+				
+			}
+// here is how many times it takes to guess
+			
+				count++;
+				document.getElementById("counter").innerHTML = "No of tries: " + count;
+
+				document.getElementById("answer").innerHTML = answerArray.join(" ");
+
+		}
+
+		if(letter.length > 0)
+
+		{
+			for (var i = 0; i < randomWord.length; i++){
+//now, if the randomword contains a letter that the user typed in
+			
+//assign it to a letter
+				
+				
+			}
+// here is how many times it takes to guess
+			
+				count + 1;
+				document.getElementById("counter").innerHTML = "No of tries: " + count;
+				document.getElementById("answer").innerHTML = answerArray.join(" ");
+
+		}
+
+		if (count > 5) {
+	
+				alert("Game Over!");
+	//		document.getElementById("stat").innerHTML = "Come on - you should have guessed it by now";
+		}
+
+	}
+
+	//make an array containing words that will be chosen at random. 
+	// Have user choose letters that will be pushed into another array. 
+	// Music that play while user is guessing their word. 
+	//counter for guesses that are wrong. 
+	// Music that plays when user makes wrong guess. 
+	// Place holder for the letters. 
+	// A game over and you win alert. 
+
+</script>
+
+
+</body>
+</html>
