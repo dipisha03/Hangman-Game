@@ -1,5 +1,4 @@
 # Hangman-Game
-Hangman Game 
 
 Technologies used: HTML | CSS | Vanilla JS
 
